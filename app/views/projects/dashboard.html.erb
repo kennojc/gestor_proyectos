@@ -8,9 +8,24 @@
     Fecha Término : <input name="end_date" type="date"><br>
     Estado : <select name="status" ><br>
                 <option value="">Todos</option>
-                <option value="propuesta">Propuesta</option>
+                <option selected value="propuesta">Propuesta</option>
                 <option value="progreso">En progreso</option>
                 <option value="finalizado">Terminado</option>
-             </select><br>
+             </select><br><br>
     <input type="submit" value="Crear"><br>
 </form>
+
+Volver al <%= link_to "Inicio", root_path %>
+<br>
+<br>
+<br>
+<h3> Lista de Proyectos Creados</h3>
+<% @projects.each do |p|%>
+<ul>
+    <li><%= p.name %></li>
+    <li><%= p.description%></li>
+    <li><%= p.start_date%></li>
+    <li><%= p.end_date%></li>
+    <li><%= p.status%></li>
+</ul>
+<% end %>
