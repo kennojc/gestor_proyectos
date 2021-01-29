@@ -1,31 +1,55 @@
-<h1>Gestor de Proyectos</h1>
-<p>Agregar un nuevo proyecto : </p>
 
-<form id="new_project" method="get">
+<h1 class="pt-5 pl-3">Gestor de Proyectos</h1>
+<p class="ml-4">Agregar un nuevo proyecto : </p>
+<div class="container mt-1">
+<form id="new_project" method="get" action="<%= projects_create_path %>">
     Título : <input name="name"><br>
     Descripción : <textarea name="description"></textarea><br>
     Fecha Inicio : <input name="start_date" type="date"><br>
     Fecha Término : <input name="end_date" type="date"><br>
     Estado : <select name="status" ><br>
-                <option value="">Todos</option>
                 <option selected value="propuesta">Propuesta</option>
                 <option value="progreso">En progreso</option>
                 <option value="finalizado">Terminado</option>
              </select><br><br>
     <input type="submit" value="Crear"><br>
 </form>
+</div>
 
 Volver al <%= link_to "Inicio", root_path %>
 <br>
 <br>
 <br>
 <h3> Lista de Proyectos Creados</h3>
-<% @projects.each do |p|%>
-<ul>
-    <li><%= p.name %></li>
-    <li><%= p.description%></li>
-    <li><%= p.start_date%></li>
-    <li><%= p.end_date%></li>
-    <li><%= p.status%></li>
-</ul>
+<h6> Filtrar según categoría:</h6><br>
+<form>
+<select name="status" class="btn btn-secondary"><br>
+      <option value="">Todos</option>
+      <option value="propuesta">Propuesta</option>
+      <option value="progreso">En Progreso</option>
+      <option value="finalizado">Terminado</option>
+    </select>
+    <button class="btn btn-dark" type="submit">Filtrar</button>
+    </form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Fecha de Inicio</th>
+      <th scope="col">Fecha de Término</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @projects.each do |p|%>
+    <tr>
+        <td><%= p.name %></td>
+        <td><%= p.description%></td>
+        <td><%= p.start_date%></td>
+        <td><%= p.end_date%></td>
+        <td><%= p.status%></td>
+    </tr>
 <% end %>
+  </tbody>
+</table>

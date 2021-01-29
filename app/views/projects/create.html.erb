@@ -1,17 +1,17 @@
-<div class="container text-center my-5 align-middle">
+<div class="container text-center align-middle">
     <% if @project.errors.any? %>
         <div id="error_explanation">
-            <h2>Se ha encontrado <%= pluralize(@project.errors.count, "error(es)") %> y no se ha podido enviar el proyecto por la(s) siguiente(s) razon(es):</h2>
+            <h2>Se ha(n) encontrado <%= pluralize(@project.errors.count, "error(es)") %> y no se ha podido generar proyecto :</h2>
             <ul>
                 <% @project.errors.full_messages.each do |msg| %>
-                    <li class="text-left"><%= msg %></li>
+                    <li class="text-center"><%= msg %></li>
                 <% end %>
             </ul>
         </div>
     <% else %>
-        <h1> Proyecto creado con exito</h1>
+        <h1> Proyecto creado exitosamente</h1>
     <% end %>
     <div class= "text-center">
-        <button type="button" class="btn btn-success btn-lg my-5 mx-auto"><%= link_to "Ver todos los proyectos", pages_dashboard_path %></button>
+    <%= link_to "Volver al Dashboard", projects_dashboard_path %>
   </div>
 </div>

@@ -8,6 +8,13 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @projects = Project.all
+
+    if params[:status].present?
+      @projects = Project.where('status = ?', params[:status])
+    else
+      @projects = Project.all
+    end
+
   end
 
   def create
